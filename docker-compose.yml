@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  crawl4ai-rag:
+    image: mcp/crawl4ai-rag
+    ports:
+      - "8051:8051"
+    env_file:
+      - .env

@@ -8,25 +8,11 @@ A powerful implementation of the [Model Context Protocol (MCP)](https://modelcon
 
 With this MCP server, you can <b>scrape anything</b> and then <b>use that knowledge anywhere</b> for RAG.
 
-The primary goal is to bring this MCP server into [Archon](https://github.com/coleam00/Archon) as I evolve it to be more of a knowledge engine for AI coding assistants to build AI agents. This first version of the Crawl4AI/RAG MCP server will be improved upon greatly soon, especially making it more configurable so you can use different embedding models and run everything locally with Ollama.
+The primary goal is to bring this MCP server into [Pheromind](https://github.com/ChrisRoyse/Pheromind) to provide project specific documentation instead of relying on context7 or web search. This first version of the Crawl4AI/RAG MCP server will be improved upon greatly soon, especially making it more configurable so you can use different embedding models and run everything locally with Ollama.
 
 ## Overview
 
 This MCP server provides tools that enable AI agents to crawl websites, store content in a vector database (Supabase), and perform RAG over the crawled content. It follows the best practices for building MCP servers based on the [Mem0 MCP server template](https://github.com/coleam00/mcp-mem0/) I provided on my channel previously.
-
-## Vision
-
-The Crawl4AI RAG MCP server is just the beginning. Here's where we're headed:
-
-1. **Integration with Archon**: Building this system directly into [Archon](https://github.com/coleam00/Archon) to create a comprehensive knowledge engine for AI coding assistants to build better AI agents.
-
-2. **Multiple Embedding Models**: Expanding beyond OpenAI to support a variety of embedding models, including the ability to run everything locally with Ollama for complete control and privacy.
-
-3. **Advanced RAG Strategies**: Implementing sophisticated retrieval techniques like contextual retrieval, late chunking, and others to move beyond basic "naive lookups" and significantly enhance the power and precision of the RAG system, especially as it integrates with Archon.
-
-4. **Enhanced Chunking Strategy**: Implementing a Context 7-inspired chunking approach that focuses on examples and creates distinct, semantically meaningful sections for each chunk, improving retrieval precision.
-
-5. **Performance Optimization**: Increasing crawling and indexing speed to make it more realistic to "quickly" index new documentation to then leverage it within the same prompt in an AI coding assistant.
 
 ## Features
 
@@ -36,6 +22,8 @@ The Crawl4AI RAG MCP server is just the beginning. Here's where we're headed:
 - **Content Chunking**: Intelligently splits content by headers and size for better processing
 - **Vector Search**: Performs RAG over crawled content, optionally filtering by data source for precision
 - **Source Retrieval**: Retrieve sources available for filtering to guide the RAG process
+- **Openrouter API**: Use any model to enrich context of chunks
+- **Local Embedding**: Using sentence_transformers
 
 ## Tools
 
@@ -59,7 +47,7 @@ The server provides four essential web crawling and search tools:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/coleam00/mcp-crawl4ai-rag.git
+   git clone https://github.com/manifestautomations/mcp-crawl4ai-rag.git
    cd mcp-crawl4ai-rag
    ```
 
@@ -74,7 +62,7 @@ The server provides four essential web crawling and search tools:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/coleam00/mcp-crawl4ai-rag.git
+   git clone https://github.com/manifestautomations/mcp-crawl4ai-rag.git
    cd mcp-crawl4ai-rag
    ```
 
@@ -131,7 +119,7 @@ SUPABASE_SERVICE_KEY=your_supabase_service_key
 ### Using Docker
 
 ```bash
-docker run --env-file .env -p 8051:8051 mcp/crawl4ai-rag
+docker compose up -d
 ```
 
 ### Using Python
